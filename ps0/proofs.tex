@@ -1,0 +1,71 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Proofs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{enumerate}[resume]
+\item (3 points) Prove that
+%
+\begin{align}
+\log_e x\leq x-1, \qquad \forall x>0
+\end{align}
+%
+with equality if and only if $x=1$.
+
+[\emph{Hint:} Consider differentiation of $\log(x)-(x-1)$ and think about concavity/convexity and second derivatives.]
+\pagebreak
+\item (6 points)
+Consider two discrete probability distributions $p$ and $q$ over $k$ outcomes:
+%
+\begin{subequations}
+\begin{align}
+\sum_{i=1}^k p_i = \sum_{i=1}^k q_i=1 \\
+p_i > 0, q_i > 0, \quad \forall i \in \{1,\ldots,k\}
+\end{align}
+\end{subequations}
+%
+The Kullback-Leibler (KL) divergence (also known as the \emph{relative entropy}) between these distributions is given by:
+%
+\begin{equation}
+KL(p,q)=\sum_{i=1}^{k} p_i\log\left(\frac{p_i}{q_i}\right)
+\end{equation}
+%
+It is common to refer to $KL(p,q)$ as a measure of distance (even though it is not a proper metric).
+Many algorithms in machine learning are based on minimizing KL divergence between two
+probability distributions.
+In this question, we will show why this might be a sensible thing to do.\\
+
+[\emph{Hint:} This question doesn't require you to know anything more than the definition of $KL(p,q)$ and the identity
+in Q$7$]
+
+\begin{enumerate}
+\item Using the results from Q$7$, show that $KL(p,q)$ is always positive.
+\pagebreak
+\item When is $KL(p,q) = 0$?
+\pagebreak
+\item Provide a counterexample to show that the KL divergence is not a symmetric function of its arguments: $KL(p,q) \neq KL(q,p)$
+\end{enumerate}
+
+\pagebreak
+\item
+(6 points) In this question, you will prove that cross-entropy loss for a softmax classifier is convex in the model parameters, thus gradient
+descent is guaranteed to find the optimal parameters. Formally, consider a single training example $(\vec{x}, y)$.
+Simplifying the notation slightly from the implementation writeup, let
+\beqn
+\vec{z} = W\vec{x} + \vec{b}, \\
+p_j = \frac{e^{z_j}}{\sum_k e^{z_k}}, \\
+L(W) = - \log \left( p_{y} \right)
+\eeqn
+
+Prove that $L(\cdot)$ is convex in W.
+
+%Following the notation from the implementation part of this section, recall the
+%cross-entropy loss
+%\beqn
+%    L(W) = -\frac{1}{N} \sum_{i=1}^N \log \left( p_i^{y_i} \right)
+%\eeqn
+%
+%Show that $L$ is convex in W.
+
+[\emph{Hint:} One way of solving this problem is ``brute force'' with first principles and Hessians. There are more elegant solutions.]
+\end{enumerate}
+
